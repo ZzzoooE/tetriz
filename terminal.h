@@ -1,3 +1,5 @@
+#pragma once
+
 namespace tc {
     void move_to(int row, int col);
     void set_fore_color(int id);
