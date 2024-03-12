@@ -1,7 +1,7 @@
 {
     "editor.codeLensFontFamily": "MesloLGS NF",
     "editor.fontFamily": "MesloLGS NF",
-    "editor.fontSize": 22,
+    "editor.fontSize": 15,
     "editor.inlayHints.fontFamily": "MesloLGS NF",
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "files.associations": {
@@ -62,6 +62,7 @@
         "streambuf": "cpp",
         "thread": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "map": "cpp"
     }
 }
