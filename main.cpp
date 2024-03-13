@@ -16,8 +16,6 @@ void init() {
 
 //游戏主体
 void loop() {
-   int i = 1;
-
    while (gm::running) {
       //显示每一帧的画面
       tc::clean_screen();
@@ -28,11 +26,27 @@ void loop() {
       dw::window(19, 22, 8, 4, "Info");
       dw::window(1, 22, 8, 18, "Next");
    
-      tc::move_to(10, 4);
+      tc::move_to(8, 6);
       std::cout << "FPS:" << ut::fps();
+
+      tc::move_to(10, 6);
+      std::cout << "Score:" << gm::score;
       
+      tc::move_to(12, 6);
+      std::cout << "Level:" << gm::level;
+
+      tc::move_to(14, 6);
+      std::cout << "Command:" << gm::command;
+
+     
+
       dw::frame(gm::frame, 2, 11);
-      
+      dw::frame_tetro(gm::one_piece, 4, 5);
+
+      int i = 0;
+      for (auto next_piece : gm::next_pieces)        
+         dw::frame_tetro(next_piece, ( ++ i) * 3 + 1, 25);
+      tc::reset_color();
       std::cout << std::flush;
 
       std::this_thread::sleep_for(16ms); //每一帧停留在屏幕上的时间
@@ -46,7 +60,7 @@ void exit() {
    tc::clean_screen();
    tc::move_to(1, 1);
    tc::set_fore_color(9);
-   puts("Bye!");
+   puts("Game Over!!");
 }
 
 int main() {

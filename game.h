@@ -4,7 +4,10 @@
 
 namespace gm {
 
+extern int level;
+extern int score;
 extern bool running;
+extern std::list<Piece> next_pieces;
 //当前掉落快
 extern Piece one_piece;
 
@@ -18,14 +21,17 @@ extern Matrix frame;
 void process();
 //游戏初始化
 void init();
-//渲染当前帧
+void to_down();
+
+// 渲染当前帧
 void render();
 //获取下一个方块
 Piece pick();
-//游戏退出
+void reset();
+// 游戏退出
 void quit();
 
-
+bool clean();
 void rotate();
 void left();
 void right();

@@ -12,6 +12,7 @@ std::map<char, std::function<void()>> comm_func {
     {KEY_S, command_down},
     {KEY_A, command_left},
     {KEY_D, command_right},
+    {KEY_R, command_reset},
 };
 
 char getch() {
@@ -41,6 +42,10 @@ void start_listener()
 {
    std::thread t(key_event);
    t.detach();
+}
+
+void command_reset() {
+   reset();
 }
 
 void command_quit()

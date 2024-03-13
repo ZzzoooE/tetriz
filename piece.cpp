@@ -1,16 +1,16 @@
 #include "piece.h"
 #include "define.h"
-
+#include "game.h"
 namespace gm
 {
 
 Piece::Piece(Tetromino &_tetro_set, int _x, int _y, int _index = 0):
-    tetro_set(_tetro_set), x(_x), y(_y), index(_index), sp_playfield(nullptr), color(tetro_color[_tetro_set]) {}
+    tetro_set(_tetro_set), x(_x), y(_y), index(_index), color(tetro_color[_tetro_set]), is_down(false) {}
 
 
-void Piece::down()
+bool Piece::down()
 {
-   move(1, 0);
+   return move(1, 0);
 }
 
 void Piece::left()
@@ -29,11 +29,6 @@ void Piece::rotate()
     if (test(x, y, ne_idx)) {
         index = ne_idx;
     }
-}
-
-void Piece::set_playfield(std::shared_ptr<Matrix> _sp_playfield)
-{
-    sp_playfield = _sp_playfield;;
 }
 
 std::pair<int, int> Piece::get_xy()
@@ -61,27 +56,33 @@ int Piece::get_index()
 //判断当前piece是否可以用idx的样子以圆点为(ox, oy)存在
 bool Piece::test(int ox, int oy, int idx)
 {
-    assert(sp_playfield!= nullptr);
     for (int i = 0; i <= 3; i ++ ) {
         auto [dx, dy] = get_mino(idx, i); //拓展坐标
         dx += ox, dy += oy;
-        if (dx < 2 || dx > 18 || dy < 12 || dy > 21) {
+        if (dx > 18 || dy < 12 || dy > 21) {
             return false;
         } 
         
-        if ((*sp_playfield)[dx][dy] > 0) {
+        if (playfield[dx][dy] > 0) {
             return false;
         }
     }
     return true;
 }
 
+Tetromino Piece::get_tetro()
+{
+    return tetro_set;
+}
+
 //判断当前块能否不变样式的移动，如果可以，移动后的快应该可以存在
-void Piece::move(int dx, int dy)
+bool Piece::move(int dx, int dy)
 {
     if (test(x + dx, y + dy, index)) {
         x += dx;
         y += dy;
+        return true;
     }
+    return false;
 }
 } // namespace gm

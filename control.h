@@ -12,7 +12,9 @@ void command_rotate();
 void command_left();
 void command_right();
 void command_down();
+void command_reset();
 
 
 
 } // namespace gn
+

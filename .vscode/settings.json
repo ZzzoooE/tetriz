@@ -64,6 +64,7 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "map": "cpp",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "list": "cpp"
     }
 }
