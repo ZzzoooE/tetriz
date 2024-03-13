@@ -20,8 +20,8 @@ void loop() {
 
    while (gm::running) {
       //显示每一帧的画面
-      gm::process();
       tc::clean_screen();
+      gm::process();
       dw::window(1, 1, 9, 6, "Hold");
       dw::window(1, 10, 12, 22, "Trtriz");
       dw::window(7, 1, 9, 16, "Status");
@@ -33,8 +33,6 @@ void loop() {
       
       dw::frame(gm::frame, 2, 11);
       
-      tc::reset_color(); //重置颜色样式
-
       std::cout << std::flush;
 
       std::this_thread::sleep_for(16ms); //每一帧停留在屏幕上的时间

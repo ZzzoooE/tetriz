@@ -7,8 +7,8 @@ namespace gm {
 extern bool running;
 //当前掉落快
 extern Piece one_piece;
-//游戏场地
 
+//游戏场地
 extern Matrix playfield;
 //每帧时间间隔
 extern std::chrono::microseconds duration;

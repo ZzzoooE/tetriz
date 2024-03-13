@@ -9,12 +9,17 @@ public:
     Piece() = default;
     Piece(Tetromino &_tetro_set, int _x, int _y, int _index);
     void down();
+    void left();
+    void right();
+    void rotate();
     void set_playfield(std::shared_ptr<Matrix> _sp_playfield);
     std::pair<int, int> get_xy();
-    std::pair<int, int> get_mino(int i);
+    std::pair<int, int> get_mino(int idx, int i);
     Color get_color();
-    bool test(int x, int y);
+    int get_index();
+    bool test(int ox, int oy, int idx);
 private:
+    void move(int dx, int dy);
     Tetromino tetro_set;
     int x, y;
     int index; //[0 R 2 L]

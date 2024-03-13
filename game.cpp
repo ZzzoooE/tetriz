@@ -26,21 +26,20 @@ void process()
     render();
     if (ut::timer(duration)) {
         one_piece.down();
-
     }
 }
 
 void render() {
     frame = playfield;
     auto [x, y] = one_piece.get_xy();
-    for (int i = 0; i < 3; i ++ ) {
-        auto [dx, dy] = one_piece.get_mino(i);
+    for (int i = 0; i < 4; i ++ ) {
+        auto [dx, dy] = one_piece.get_mino(one_piece.get_index(), i);
         frame[x + dx][y + dy] = (int)one_piece.get_color();
     }
 }
 
 Piece pick() {
-    return Piece(J, 4, 20, 0);
+    return Piece(J, 3, 15, 1);
 }
 
 void quit() {
@@ -49,19 +48,22 @@ void quit() {
 
 void rotate()
 {
-
+    one_piece.rotate(); 
 }
 
 void left()
 {
+    one_piece.left();
 }
 
 void right()
 {
+    one_piece.right();
 }
 
 void down()
 {
+    one_piece.down();
 }
 
 } // namespace gm
