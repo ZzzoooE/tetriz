@@ -20,6 +20,7 @@ void loop() {
 
    while (gm::running) {
       //显示每一帧的画面
+      gm::process();
       tc::clean_screen();
       dw::window(1, 1, 9, 6, "Hold");
       dw::window(1, 10, 12, 22, "Trtriz");
@@ -30,14 +31,12 @@ void loop() {
       tc::move_to(10, 4);
       std::cout << "FPS:" << ut::fps();
       
-      tc::move_to(gm::row, dw::block2col(gm::col));
+      dw::frame(gm::frame, 2, 11);
       
-      // tc::set_back_color(15);
-      // std::cout << "  ";
-      // std::cout << std::flush; //刷新缓冲
-      dw::tetromino(gm::cur, gm::row, gm::col);
       tc::reset_color(); //重置颜色样式
+
       std::cout << std::flush;
+
       std::this_thread::sleep_for(16ms); //每一帧停留在屏幕上的时间
    }
 }

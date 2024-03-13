@@ -33,7 +33,6 @@ void key_event() {
       if (it != comm_func.end()) {
         it->second();
       }
-
    }
 }
 

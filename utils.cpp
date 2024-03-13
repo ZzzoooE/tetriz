@@ -1,7 +1,6 @@
 #include "utils.h"
 #include "define.h"
 
-using namespace std::chrono_literals;
 
 namespace ut {
 int fps() //计算帧率
@@ -20,8 +19,15 @@ int fps() //计算帧率
     return fps;
 }
 
-int b2c(int b) {
-    return b * 2 - 1;
+bool timer(std::chrono::microseconds sec)
+{
+    static auto start = std::chrono::steady_clock::now(); 
+    auto end = std::chrono::steady_clock::now();
+    if (end - start > sec) {
+        start = end;
+        return true;
+    }
+    return false;
 }
 
 }

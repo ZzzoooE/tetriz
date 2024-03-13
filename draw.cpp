@@ -24,21 +24,41 @@ inline int block2col(int b) {
     return b * 2 - 1;
 }
 
-void tetromino(gm::Tetromino &t, int top, int left)
+void frame(Matrix &f, int top, int left)
 {
-    int l = t.size();
-    for (int i = 0; i < l; i ++ ) {
-        tc::move_to(top + i, block2col(left));
-        for (int j = 0; j < l; j ++ ) {
-            if (t[i][j] == 1) {
-                tc::set_back_color((int)gm::tetro_color[t[i][j]]);
+    int row, col;
+    for (int x = 0; x < 20; x ++ ) {
+        for (int y = 0; y < 10; y ++ ) {
+            tc::move_to(x + top, block2col(y + left));
+            if (f[x][y] > 0) {
+                tc::reset_color();
+                tc::set_back_color(f[x][y]);
+                std::cout << "  ";
             } else {
                 tc::reset_color();
+                std::cout << "\u30FB";
             }
-            std::cout << "  ";
         }
     }
 }
+
+// void tetromino(const gm::Piece &p)
+// {
+//    int color = (int)gm::tetro_color[t];
+//    assert(color != 0);
+//    tc::set_back_color(color);
+
+//    tc::move_to(top, block2col(left));
+//    std::cout << "  ";
+
+//    for (auto p: t[idx]) {
+//        int x = p.first + top;
+//        int y = block2col(p.second + left);
+//        tc::move_to(x, y);
+//        std::cout << "  ";
+//    }
+
+// }
 
 //绘制如下窗口 (top,left)为左上角坐标,width,height对应其宽度,高度,第一行中间居中显示标题    
 /*

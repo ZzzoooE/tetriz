@@ -1,6 +1,7 @@
 #pragma once
+#include <chrono>
 
 namespace ut {
     int fps();
-    int b2c();
+    bool timer(std::chrono::microseconds sec);
 }

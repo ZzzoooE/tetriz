@@ -1,17 +1,46 @@
 #include "game.h"
 #include "tetromino.h"
+#include "utils.h"
 
 namespace gm
 {
 bool running{false};
-int row{0}, col{0};
-Tetromino cur;
+Piece one_piece;
+Matrix playfield;
+std::chrono::microseconds duration;
+Matrix frame;
 
-void init() {
+
+void init()
+{
     running = true;
-    row = 2;
-    col = 15;
-    cur = I;
+    one_piece = pick();
+    playfield = Matrix(22, std::vector<int>(10, 0));
+    duration = 500ms;
+    frame = playfield;
+    one_piece.set_playfield(std::make_shared<Matrix>(playfield));
+}
+
+void process()
+{
+    render();
+    if (ut::timer(duration)) {
+        one_piece.down();
+
+    }
+}
+
+void render() {
+    frame = playfield;
+    auto [x, y] = one_piece.get_xy();
+    for (int i = 0; i < 3; i ++ ) {
+        auto [dx, dy] = one_piece.get_mino(i);
+        frame[x + dx][y + dy] = (int)one_piece.get_color();
+    }
+}
+
+Piece pick() {
+    return Piece(J, 4, 20, 0);
 }
 
 void quit() {
@@ -20,22 +49,19 @@ void quit() {
 
 void rotate()
 {
-    cur = rotate(cur);
+
 }
 
 void left()
 {
-    col -- ;
 }
 
 void right()
 {
-    col ++ ;
 }
 
 void down()
 {
-    row ++ ;
 }
 
 } // namespace gm
