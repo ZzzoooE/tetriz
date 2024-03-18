@@ -12,7 +12,6 @@ public:
     void left();
     void right();
     void rotate();
-    // void set_playfield(std::shared_ptr<Matrix> _sp_playfield);
     std::pair<int, int> get_xy();
     std::pair<int, int> get_mino(int idx, int i);
     Color get_color();
@@ -25,7 +24,6 @@ private:
     int x, y;
     int index; //[0 R 2 L]
     Color color;
-    bool is_down;
 };
 
 

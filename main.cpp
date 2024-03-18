@@ -38,7 +38,6 @@ void loop() {
       tc::move_to(14, 6);
       std::cout << "Command:" << gm::command;
 
-     
 
       dw::frame(gm::frame, 2, 11);
       dw::frame_tetro(gm::one_piece, 4, 5);
@@ -46,6 +45,7 @@ void loop() {
       int i = 0;
       for (auto next_piece : gm::next_pieces)        
          dw::frame_tetro(next_piece, ( ++ i) * 3 + 1, 25);
+         
       tc::reset_color();
       std::cout << std::flush;
 

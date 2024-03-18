@@ -5,7 +5,7 @@ namespace gm
 {
 
 Piece::Piece(Tetromino &_tetro_set, int _x, int _y, int _index = 0):
-    tetro_set(_tetro_set), x(_x), y(_y), index(_index), color(tetro_color[_tetro_set]), is_down(false) {}
+    tetro_set(_tetro_set), x(_x), y(_y), index(_index), color(tetro_color[_tetro_set]) {}
 
 
 bool Piece::down()
@@ -53,7 +53,7 @@ int Piece::get_index()
     return index;
 }
 
-//判断当前piece是否可以用idx的样子以圆点为(ox, oy)存在
+//判断当前piece是否可以用idx的旋转姿势以中心点为(ox, oy)存在
 bool Piece::test(int ox, int oy, int idx)
 {
     for (int i = 0; i <= 3; i ++ ) {

@@ -27,10 +27,10 @@ void to_down();
 void render();
 //获取下一个方块
 Piece pick();
-void reset();
 // 游戏退出
 void quit();
 
+void reset();
 bool clean();
 void rotate();
 void left();

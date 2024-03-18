@@ -8,11 +8,17 @@ char command;
 
 std::map<char, std::function<void()>> comm_func {
     {KEY_Q, command_quit},
+    {KEY_q, command_quit},
     {KEY_W, command_rotate},
+    {KEY_w, command_rotate},
     {KEY_S, command_down},
+    {KEY_s, command_down},
     {KEY_A, command_left},
+    {KEY_a, command_left},
     {KEY_D, command_right},
+    {KEY_d, command_right},
     {KEY_R, command_reset},
+    {KEY_r, command_reset},
 };
 
 char getch() {

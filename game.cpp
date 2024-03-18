@@ -26,7 +26,6 @@ void init()
     playfield = Matrix(22, std::vector<int>(10, 0));
     duration = 500ms;
     frame = playfield;
-    // one_piece.set_playfield(std::make_shared<Matrix>(playfield));
 }
 
 bool clean() {
